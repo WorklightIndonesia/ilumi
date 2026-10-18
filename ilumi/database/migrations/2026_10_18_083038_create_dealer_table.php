@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('alamat', 255);
             $table->string('opening_hours', 255);
             $table->string('city', 255);
-
+            $table->string('maps', 255);
 
             $table->string('created_by', 100)->nullable();
             $table->timestamp('created_date')->nullable();
