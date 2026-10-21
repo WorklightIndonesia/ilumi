@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tipe_mobil', function (Blueprint $table) {
             $table->string('kode', 50)->primary();
             $table->string('name', 255);
+            $table->integer('order_no');
 
             $table->string('created_by', 100)->nullable();
             $table->timestamp('created_date')->nullable();

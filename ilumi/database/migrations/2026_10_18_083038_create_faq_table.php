@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('faq', function (Blueprint $table) {
             $table->string('kode', 50)->primary();
-            $table->string('name', 255);
+            $table->integer('order_no')->nullable();
             $table->text('question')->nullable();
             $table->longText('answer')->nullable();
 
