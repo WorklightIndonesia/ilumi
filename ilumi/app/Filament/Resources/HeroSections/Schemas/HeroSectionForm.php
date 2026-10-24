@@ -34,7 +34,7 @@ class HeroSectionForm
                             ->required()
                             ->maxLength(255),
 
-                        Textarea::make('Deskripsi')
+                        Textarea::make('description')
                             ->label('Description')
                             ->rows(4)
                             ->required()
