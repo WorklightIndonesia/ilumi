@@ -18,7 +18,7 @@ class Section2Form
                     ->description('Atur konten Section 2 pada website Ilumi.')
                     ->schema([
                         FileUpload::make('image')
-                            ->label('Image')
+                            ->label('Foto')
                             ->image()
                             ->disk('public')
                             ->directory('section-2')
@@ -38,13 +38,13 @@ class Section2Form
                             ->columnSpanFull(),
 
                         Textarea::make('description')
-                            ->label('Description')
+                            ->label('Deskripsi')
                             ->rows(4)
                             ->nullable()
                             ->columnSpanFull(),
 
                         TextInput::make('cta_text')
-                            ->label('CTA Text')
+                            ->label('Tombol Text')
                             ->placeholder('Contoh: Pelajari Lebih Lanjut')
                             ->maxLength(100)
                             ->nullable()

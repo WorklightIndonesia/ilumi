@@ -34,6 +34,22 @@ class Section2Resource extends Resource
 
     protected static ?string $slug = 'umum/section-2';
 
+    public static function getNavigationUrl(): string
+    {
+        $record = Section2::query()
+            ->orderBy('created_date', 'asc')
+            ->orderBy('id', 'asc')
+            ->first();
+
+        if ($record) {
+            return static::getUrl('edit', [
+                'record' => $record,
+            ]);
+        }
+
+        return static::getUrl('create');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return Section2Form::configure($schema);
@@ -55,6 +71,7 @@ class Section2Resource extends Resource
     {
         return [
             'index' => CreateSection2::route('/'),
+            'create' => CreateSection2::route('/create'),
             'edit' => EditSection2::route('/{record}/edit'),
         ];
     }

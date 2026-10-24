@@ -18,7 +18,7 @@ class HeroSectionForm
                     ->description('Atur konten utama halaman website Ilumi.')
                     ->schema([
                         FileUpload::make('image_background')
-                            ->label('Image Background')
+                            ->label('Background Foto')
                             ->image()
                             ->disk('public')
                             ->directory('hero-sections')
@@ -34,14 +34,14 @@ class HeroSectionForm
                             ->required()
                             ->maxLength(255),
 
-                        Textarea::make('description')
+                        Textarea::make('Deskripsi')
                             ->label('Description')
                             ->rows(4)
                             ->required()
                             ->columnSpanFull(),
 
                         TextInput::make('cta_text')
-                            ->label('CTA Text')
+                            ->label('Teks Tombol')
                             ->required()
                             ->placeholder('Contoh: Temukan Produk')
                             ->maxLength(100),

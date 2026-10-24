@@ -29,7 +29,23 @@ class HeroSectionResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'heading_1';
+    protected static ?string $recordTitleAttribute = 'HeroSection';
+
+    public static function getNavigationUrl(): string
+    {
+        $record = HeroSection::query()
+            ->orderBy('created_date', 'asc')
+            ->orderBy('id', 'asc')
+            ->first();
+
+        if ($record) {
+            return static::getUrl('edit', [
+                'record' => $record,
+            ]);
+        }
+
+        return static::getUrl('create');
+    }
 
     public static function form(Schema $schema): Schema
     {
@@ -59,6 +75,7 @@ class HeroSectionResource extends Resource
     {
         return [
             'index' => CreateHeroSection::route('/'),
+            'create' => CreateHeroSection::route('/create'),
             'edit' => EditHeroSection::route('/{record}/edit'),
         ];
     }
