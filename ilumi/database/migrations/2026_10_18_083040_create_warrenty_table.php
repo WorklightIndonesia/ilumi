@@ -36,12 +36,6 @@ return new class extends Migration
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
 
-            $table->foreign('tipe_mobil')
-                ->references('kode')
-                ->on('tipe_mobil')
-                ->cascadeOnUpdate()
-                ->restrictOnDelete();
-
             $table->index('nomor_polisi');
         });
     }

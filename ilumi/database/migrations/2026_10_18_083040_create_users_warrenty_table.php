@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name', 255);
             $table->string('ewarrenty', 100);
 
-            $table->string('status', 50)->default('pending');
+            $table->string('status', 50);
             $table->string('email', 255)->nullable();
             $table->string('whatsapp_no', 30)->nullable();
             $table->text('comment')->nullable();

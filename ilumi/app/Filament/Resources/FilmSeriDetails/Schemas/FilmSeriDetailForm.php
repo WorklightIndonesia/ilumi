@@ -117,7 +117,8 @@ class FilmSeriDetailForm
                             ->label('Penolakan Panas')
                             ->maxLength(255),
                     ])
-                    ->columns(2),
+                    ->columns(2)
+                    ->columnSpanFull(),
 
         ]);
     }

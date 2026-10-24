@@ -22,6 +22,8 @@ class TipeMobilResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'tipe_mobil';
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $navigationLabel = 'Tipe Mobil';
 
     protected static ?string $modelLabel = 'Tipe Mobil';
@@ -29,6 +31,26 @@ class TipeMobilResource extends Resource
     protected static ?string $pluralModelLabel = 'Tipe Mobil';
 
     protected static ?string $slug = 'tipe-mobil';
+
+    public static function canViewAny(): bool
+    {
+        return false;
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function canEdit(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        return false;
+    }
+
+    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        return false;
+    }
 
 
     public static function form(Schema $schema): Schema

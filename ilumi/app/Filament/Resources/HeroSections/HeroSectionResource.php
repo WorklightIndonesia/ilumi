@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Filament\Resources\HeroSections;
+
+use App\Filament\Resources\HeroSections\Pages\CreateHeroSection;
+use App\Filament\Resources\HeroSections\Pages\EditHeroSection;
+use App\Filament\Resources\HeroSections\Pages\ListHeroSections;
+use App\Filament\Resources\HeroSections\Schemas\HeroSectionForm;
+use App\Filament\Resources\HeroSections\Tables\HeroSectionsTable;
+
+use App\Models\HeroSection;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+
+class HeroSectionResource extends Resource
+{
+    protected static string|\UnitEnum|null $navigationGroup = 'Konten Web';
+
+    protected static ?string $model = HeroSection::class;
+
+    protected static ?string $navigationLabel = 'Hero Section';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $slug = 'umum/hero-section';
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static ?string $recordTitleAttribute = 'heading_1';
+
+    public static function form(Schema $schema): Schema
+    {
+        return HeroSectionForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return HeroSectionsTable::configure($table);
+    }
+
+    public static function canCreate(): bool
+    {
+        // Hanya boleh membuat data jika belum ada Hero Section.
+        return ! HeroSection::query()->exists();
+    }
+
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => CreateHeroSection::route('/'),
+            'edit' => EditHeroSection::route('/{record}/edit'),
+        ];
+    }
+}
